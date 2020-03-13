@@ -1,6 +1,6 @@
 # Project description
 [![CircleCI](https://circleci.com/gh/igorwojda/android-showcase.svg?style=shield)](https://circleci.com/gh/igorwojda/android-showcase)
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.50-blue.svg)](https://kotlinlang.org)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-1.3.61-blue.svg)](https://kotlinlang.org)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 [![codebeat badge](https://codebeat.co/badges/7f632064-0be5-450f-b29f-f0e1460582ab)](https://codebeat.co/projects/github-com-igorwojda-android-showcase-master)
@@ -8,7 +8,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/igorwojda/android-showcase/badge)](https://www.codefactor.io/repository/github/igorwojda/android-showcase)
 
 
-Showcase is a sample project that presents modern, 2019 approach to
+Showcase is a sample project that presents modern, 2020 approach to
 [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) application development using
 [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
@@ -18,8 +18,8 @@ has all of these small details that will set the rock-solid foundation of the la
 long [application lifecycle](https://en.wikipedia.org/wiki/Application_lifecycle_management). Many of the project design
 decisions follow official Google recommendations.
 
-This project is being heavily maintained to match current industry standards. In upcoming weeks (Aug-Dec 2019) I plan to
-write an extensive series of articles explaining many of this project architectural design decisions, so <a
+This project is being heavily maintained to match current industry standards. In upcoming weeks I plan to
+write an extensive series of articles explaining many of this project architectural [design decisions](#design-decisions) , so <a
 href="https://twitter.com/igorwojda" target="_blank">stay tuned</a>.
 
 ## Project characteristics
@@ -29,8 +29,8 @@ This project brings to table set of best practices, tools, and solutions:
 * 100% [Kotlin](https://kotlinlang.org/)
 * Modern architecture (feature modules, Clean Architecture, Model-View-ViewModel, Model-View-Intent)
 * [Android Jetpack](https://developer.android.com/jetpack)
-* A single-activity architecture, using the Navigation component to manage fragment operations
-  * Reactive UIs
+* A single-activity architecture, using the [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) to manage fragment operations
+* Reactive UI
 * CI pipeline
 * Testing
 * Static analysis tools
@@ -130,6 +130,13 @@ These are all of the Gradle tasks (cmd commands) that are [executed by CI](/circ
 On top of that project contains custom `./gradlew staticCheck` task that mimics all CI tasks and is intended to run on
 local computer.
 
+### Design decisions
+
+Read related articles to have better understanding of underlying design decisions and various trade offs.
+
+* [Multiple ways of defining Clean Architecture layers](https://proandroiddev.com/multiple-ways-of-defining-clean-architecture-layers-bbb70afa5d4a)
+* More coming soon
+
 ## What this project does not cover?
 
 The interface of the app utilises some of modern material design components, however, is deliberately kept simple to
@@ -167,11 +174,15 @@ There are a few ways to open this project.
 
 ## Inspiration
 
-This is project is just a sample, to inspire you and should handle most of the common cases. I encourage you to also
-take a look at other high-quality projects to find architecture that works for you and your existing codebase:
+This is project is a sample, to inspire you and should handle most of the common cases, but please take a look at
+additional resources.
+
+### Projects
+
+Other high-quality projects will help you to find solutions that works for your project:
 
 * [Iosched](https://github.com/google/iosched) - official Android application from google IO 2019
-* [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - showcase of different
+* [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - showcase of various
   Android architecture approaches
 * [Android sunflower](https://github.com/googlesamples/android-sunflower) complete `Jetpack` sample covering all
   libraries
@@ -180,21 +191,19 @@ take a look at other high-quality projects to find architecture that works for y
 * [Plaid](https://github.com/android/plaid) - showcase of Android material design
 * [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice
   diagrams of Clean Architecture layers
+* [Android samples](https://github.com/android) - official Android samples repository
 * [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good
   documentation
 
 ## Known issues
-- API 21 crash on start
-- Android Extensions experimental mode doesn't work with Gradle Kotlin DSL ([Fixed in upcoming Kotlin 1.3.60](https://youtrack.jetbrains.com/issue/KT-22213))
-- CI sometimes fails with ConcurrentModificationException when running various tasks ([Fixed in upcoming Kotlin 1.3.60](https://youtrack.jetbrains.com/issue/KT-32853))
-- Kotlin option type is not defined ([Fixed in upcoming Kotlin 1.3.60](https://youtrack.jetbrains.com/issue/KT-31077))
 - `ktlint` ignores multiple file extensions when space is present in `.editorconfig` ([Fixed in upcoming 0.34.2+ release](https://github.com/pinterest/ktlint/pull/561))
-- Android Gradle Plugin 3.5.0 is failing with dynamic feature modules ([Fixed in upcoming 3.5.1](https://issuetracker.google.com/issues/136806086))
+- `ktlint` `import-ordering` rule conflicts with IDE default formatting rule, so it have to be [disabled](.editorconfig)
 - Classes generated by `SafeArgs` plugin (`AlbumListFragmentDirections`, `AlbumDetailFragmentArgs`...) are not properly
   recognized by IDE in the multi-module configuration. Code will run however IDE will mark these classes as non-
   existing. Also sometimes code has to be cleaned before running tests. This needs more investigation.
 - False positive "Unused symbol" for a custom Android application class referenced in AndroidManifest.xml file ([Issue](https://youtrack.jetbrains.net/issue/KT-27971))
 - False positive "Function can be private" ([Issue](https://youtrack.jetbrains.com/issue/KT-33610))
+- Gradle Kotlin Script is not fully supported by Android Studio
 - Unit tests are running in IDE but fail after running gradle task because of missing Agrs class ([Issue](https://issuetracker.google.com/issues/139242292))
 
 
@@ -226,7 +235,7 @@ portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT 
 LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN 
 NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+WHETHER IN AN ACTION OF  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
